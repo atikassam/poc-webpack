@@ -2,16 +2,18 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
-// There are four key concepts in web pack 
+// There are four key concepts in webpack 
 // i.e entry, output, loader and plugin 
-// we will use all the four key concepts here
+// we will try to use all the four key concepts here
 
 module.exports = {
+	// Entry section
 	// Our entry module which will be used by the webpack
 	// to build out its internal dependency graph
 	entry: "./src/application/index.ts"
 	
 	
+	// Output section
 	// Webpack will use this path to store the emited files
 	, output: {
 		filename: "main.js",
@@ -19,6 +21,7 @@ module.exports = {
 	}
 	
 	
+	// Loader section
 	// Set some loader to transform the source code modules
 	, module: {
 		rules: [
@@ -27,8 +30,8 @@ module.exports = {
 		]
 	}
 	
-	
-	// We are adding HtmlWebpackPlugin plugin which will have 
+	// Plugin section
+	// We can add a plugin(instance of a class) here which will have 
 	// an access to the entire compilation lifecycle to 
 	// its apply property/method
 	, plugins: [
@@ -44,14 +47,15 @@ module.exports = {
 		, new webpack.HotModuleReplacementPlugin()
 	]
 	
+	
 	// Lets set the development server
 	// For this you need to install `webpack-dev-server`
-	// to run it use `npx webpack-dev-server` command 
+	// And to run it use `npx webpack-dev-server` command 
     , devServer: {
-		// Lets Serve our build dir `dest`
+		// Lets Serve our build directory `dest`
 		contentBase: './dest',
 		
-		// Turn on Hot Module replacement
+		// Turn on Hot Module replacement 
 		hot: true
     }
 }
